@@ -1,5 +1,11 @@
+
+# Tasks : 
+# 1. Develop parser that will take input from lexical analyzer
+# 2. Check whether input got from lexical analyzer is valid or not.
+
+# Removes Left Recursion from the grammar rules.
 def removeLeftRecursion(rulesDiction):
-    store = {}
+    store = {} # it stores the new rules to be added.
     
     for lhs in rulesDiction:
         
@@ -35,8 +41,6 @@ def removeLeftRecursion(rulesDiction):
 
 
 def LeftFactoring(rulesDiction):
-    
-
     
     newDict = {}
     
@@ -80,9 +84,7 @@ def LeftFactoring(rulesDiction):
     return newDict
 
 
-
-
-
+# Helps in calculation of the First(X) for the Grammar variables.
 def first(rule):
     global rules, nonterm_userdef, term_userdef, diction, firsts
     
@@ -129,9 +131,7 @@ def first(rule):
                 return fres
 
 
-
-
-
+# Helps in calculation of the Follow(X) for the Grammar variables.
 def follow(nt):
     global start_symbol, rules, nonterm_userdef, term_userdef, diction, firsts, follows
     
@@ -140,10 +140,6 @@ def follow(nt):
     if nt == start_symbol:
         
         solset.add("$")
-
-    
-
-    
     for curNT in diction:
         rhs = diction[curNT]
         
@@ -255,7 +251,7 @@ def computeAllFollows():
         index += 1
 
 
-
+# Creates the parse table based on the First and Follow of the Grammar variables.
 def createParseTable():
     import copy
 
@@ -302,7 +298,8 @@ def createParseTable():
     
     grammar_is_LL = True
 
-    
+    # Rules Implementation :
+
     for lhs in diction:
         rhs = diction[lhs]
         for y in rhs:
@@ -420,32 +417,15 @@ def validateStringUsingStackBuffer(
                 return "\nInvalid String! " "Unmatched terminal symbols"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Grammar Rules :
 rules = [
     "E -> E + T | E - T | T",
     "T -> T * F | T / F | F",
     "F -> num | id | ( E ) ",
 ]
-
+# Non - Terminal Symbols :
 nnonterm_userdef = ["E", "T", "F"]
+# Terminals :
 term_userdef = ["num", "id", "+", "-", "*", "/", "(", ")"]
 sample_input_string = "id * id"
 
@@ -453,9 +433,11 @@ sample_input_string = "id * id"
 #
 
 
-
+# diction : stores rules inputed
 diction = {}
+# firsts : stores computed firsts 
 firsts = {}
+# follows : stores computed follows
 follows = {}
 
 
