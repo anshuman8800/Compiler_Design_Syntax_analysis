@@ -1,0 +1,2 @@
+flex lex_analyzer.l && cc lex.yy.c && ./a.out < input.txt > output.txt
+python ll1_parser.py
