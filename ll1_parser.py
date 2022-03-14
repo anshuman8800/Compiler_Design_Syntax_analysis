@@ -431,6 +431,22 @@ sample_input_string = "id * id"
 
 
 #
+# rules = [
+#     "S -> Ab | Ba | #",
+#     "A -> aS | bAA",
+#     "B -> b"
+# ]
+# nnonterm_userdef = ["S", "A", "B"]
+# term_userdef = ["b", "a"]
+
+# rules = [
+#     "S -> A | a",
+#     "A -> Bc | b",
+#     "B -> Ab | c"
+# ]
+# nnonterm_userdef = ["S", "A", "B"]
+# term_userdef = ["a", "b", "c"]
+
 
 
 # diction : stores rules inputed
